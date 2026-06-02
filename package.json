@@ -1,0 +1,94 @@
+{
+  "name": "quick-snippets",
+  "displayName": "Quick Snippets",
+  "description": "快捷保存、管理与插入自定义代码片段",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "uiSnippets.insert",
+        "title": "UI Snippets: 插入代码片段",
+        "icon": "$(symbol-snippet)"
+      },
+      {
+        "command": "uiSnippets.save",
+        "title": "UI Snippets: 保存为代码片段"
+      },
+      {
+        "command": "uiSnippets.manage",
+        "title": "UI Snippets: 管理代码片段"
+      },
+      {
+        "command": "uiSnippets.edit",
+        "title": "UI Snippets: 编辑代码片段"
+      },
+      {
+        "command": "uiSnippets.delete",
+        "title": "UI Snippets: 删除代码片段"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "uiSnippets.save",
+          "when": "editorTextFocus",
+          "group": "9_quickSnippets@1"
+        },
+        {
+          "command": "uiSnippets.insert",
+          "when": "editorTextFocus",
+          "group": "9_quickSnippets@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "uiSnippets.insert"
+        },
+        {
+          "command": "uiSnippets.save"
+        },
+        {
+          "command": "uiSnippets.manage"
+        },
+        {
+          "command": "uiSnippets.edit"
+        },
+        {
+          "command": "uiSnippets.delete"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "uiSnippets.insert",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
