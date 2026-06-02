@@ -64,14 +64,11 @@ async function insertSnippet(store: SnippetStore): Promise<void> {
     return;
   }
 
-  const position = editor.selection.active;
-  await editor.edit((builder) => {
-    if (!editor.selection.isEmpty) {
-      builder.replace(editor.selection, snippet.body);
-    } else {
-      builder.insert(position, snippet.body);
-    }
-  });
+  const snippetString = new vscode.SnippetString(snippet.body);
+  const target = editor.selection.isEmpty
+    ? editor.selection.active
+    : editor.selection;
+  await editor.insertSnippet(snippetString, target);
 }
 
 async function saveSnippet(store: SnippetStore): Promise<void> {

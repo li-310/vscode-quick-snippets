@@ -2,7 +2,7 @@
   "name": "quick-snippets",
   "displayName": "Quick Snippets",
   "description": "快捷保存、管理与插入自定义代码片段",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "local",
   "license": "MIT",
   "repository": {

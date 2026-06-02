@@ -46,7 +46,7 @@ export function registerSnippetCompletionProvider(
         item.documentation = new vscode.MarkdownString(
           snippet.description ?? snippet.body
         );
-        item.insertText = snippet.body;
+        item.insertText = new vscode.SnippetString(snippet.body);
         if (currentWordRange) {
           item.range = currentWordRange;
         }
